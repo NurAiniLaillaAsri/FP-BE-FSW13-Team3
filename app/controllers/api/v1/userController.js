@@ -53,6 +53,23 @@ module.exports = {
       updatedAt: user.updatedAt,
     });
   },
+  update(req, res) {
+    // req.body.updatedBy = req.user.user_email;
+    usersService
+      .update(req.params.id, req.body)
+      .then(() => {
+        res.status(200).json({
+          status: "OK",
+          message: "Data berhasil diperbarui",
+        });
+      })
+      .catch((err) => {
+        res.status(422).json({
+          status: "FAIL",
+          message: err.message,
+        });
+      });
+  },
 
   async whoAmI(req, res) {
     res.status(200).json(req.user);

@@ -20,6 +20,11 @@ appRouter.post(
   controllers.api.v1.userController.register
 );
 
+appRouter.post(
+  "/api/v1/update/:id",
+  controllers.api.v1.userController.update
+)
+
 // PRODUCT ROUTE  
 appRouter.post(
   "/api/v1/product",
